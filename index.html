@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stud Finder Pro</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(180deg, #1A1F26 0%, #0D1115 100%);
+      color: #F5F1EA;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 27px;
+      margin: 0 auto 28px;
+      display: block;
+      box-shadow: 0 10px 40px rgba(245, 147, 36, 0.25);
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .tagline {
+      color: #A8A095;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    a {
+      display: block;
+      padding: 14px 20px;
+      background: #222831;
+      border: 1px solid #3A3F47;
+      border-radius: 12px;
+      color: #F5F1EA;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    a:hover {
+      background: #2A3038;
+      border-color: #F59324;
+      color: #F59324;
+    }
+    .footer {
+      margin-top: 40px;
+      color: #6B6660;
+      font-size: 12px;
+    }
+    .footer a {
+      display: inline;
+      padding: 0;
+      background: none;
+      border: none;
+      color: #6B6660;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="icon" src="icon.png" alt="Stud Finder Pro icon">
+    <h1>Stud Finder Pro</h1>
+    <p class="tagline">Measure twice. Drill once.</p>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p class="footer">
+      <a href="https://apps.apple.com/app/id6759074563">Download on the App Store</a><br>
+      Cloud Motion Lab · <a href="mailto:dev@slyapp.co">dev@slyapp.co</a>
+    </p>
+  </div>
+</body>
+</html>
