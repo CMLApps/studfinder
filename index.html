@@ -1,96 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stud Finder Pro</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-      background: linear-gradient(180deg, #1A1F26 0%, #0D1115 100%);
-      color: #F5F1EA;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>How do I find a stud in the wall with my phone? | Stud Finder Pro</title>
+<meta name="description" content="Your phone finds the screws holding drywall to a stud, not the wood itself. How to scan a wall with it, and what it will never see.">
+<link rel="canonical" href="https://cmlapps.github.io/studfinder/">
+<meta name="theme-color" content="#FFF9F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#130D08" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Motion Lab">
+<meta property="og:title" content="How do I find a stud in the wall with my phone?">
+<meta property="og:description" content="Your phone finds the screws holding drywall to a stud, not the wood itself. How to scan a wall with it, and what it will never see.">
+<meta property="og:url" content="https://cmlapps.github.io/studfinder/">
+<meta property="og:image" content="">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/png;base64,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">
+
+<style>
+/* ---- fallback tokens: any browser without oklch() gets a neutral, on-brand page ---- */
+:root{
+  --bg:#FBFAFC; --surface:#FFFFFF; --ink:#191920; --ink-2:#56565F;
+  --line:#E4E3E9; --accent:#1B1B22; --on-accent:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0E0E13; --surface:#17171D; --ink:#F4F4F7; --ink-2:#A9A9B3;
+    --line:#33333C; --accent:#F4F4F7; --on-accent:#0E0E13;
+  }
+}
+/* ---- the real system: one app-specific number drives every colour on the page ---- */
+@supports (color: oklch(0.5 0.1 180)){
+  :root{
+    --h:60;
+    --bg:oklch(0.985 0.010 var(--h));
+    --surface:oklch(1 0 0);
+    --ink:oklch(0.20 0.020 var(--h));
+    --ink-2:oklch(0.44 0.018 var(--h));
+    --line:oklch(0.860 0.022 var(--h));
+    --accent:oklch(0.48 0.160 var(--h));
+    --on-accent:oklch(0.99 0.005 var(--h));
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:oklch(0.165 0.014 var(--h));
+      --surface:oklch(0.205 0.016 var(--h));
+      --ink:oklch(0.965 0.006 var(--h));
+      --ink-2:oklch(0.735 0.014 var(--h));
+      --line:oklch(0.365 0.022 var(--h));
+      --accent:oklch(0.780 0.150 var(--h));
+      --on-accent:oklch(0.170 0.030 var(--h));
     }
-    .card {
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-    }
-    .icon {
-      width: 120px;
-      height: 120px;
-      border-radius: 27px;
-      margin: 0 auto 28px;
-      display: block;
-      box-shadow: 0 10px 40px rgba(245, 147, 36, 0.25);
-    }
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-    }
-    .tagline {
-      color: #A8A095;
-      font-size: 16px;
-      margin-bottom: 40px;
-    }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-    a {
-      display: block;
-      padding: 14px 20px;
-      background: #222831;
-      border: 1px solid #3A3F47;
-      border-radius: 12px;
-      color: #F5F1EA;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.15s ease;
-    }
-    a:hover {
-      background: #2A3038;
-      border-color: #F59324;
-      color: #F59324;
-    }
-    .footer {
-      margin-top: 40px;
-      color: #6B6660;
-      font-size: 12px;
-    }
-    .footer a {
-      display: inline;
-      padding: 0;
-      background: none;
-      border: none;
-      color: #6B6660;
-    }
-  </style>
+  }
+}
+:root{
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --rail:24px;
+  color-scheme:light dark;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:inherit}
+a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:3px;
+}
+/* the CTA is already accent-filled, so its ring is ink: a different mark, not a louder one */
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+.doc{
+  max-width:640px;
+  margin:0 auto;
+  padding:20px 20px calc(48px + env(safe-area-inset-bottom)) 20px;
+}
+@media (min-width:600px){ .doc{padding:32px 32px 64px} }
+
+/* ---- masthead ---- */
+.masthead{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:32px;
+}
+.brand{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+  text-decoration:none;
+}
+.brand:hover{color:var(--ink)}
+/* the right slot is a support jump, not a decorative genre label. This URL is the
+   App Store Support URL, so a contact route has to be reachable without scrolling. */
+.masthead .support-jump{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+}
+.masthead .support-jump:hover{color:var(--ink)}
+
+/* ---- the question: semantically first, visually second ---- */
+.q{
+  font-size:20px;
+  font-weight:590;
+  line-height:1.35;
+  letter-spacing:-0.011em;
+  color:var(--ink-2);
+  margin:0 0 12px;
+  text-wrap:balance;
+}
+/* ---- the answer: the largest type on the page, because it is why anyone is here ---- */
+.a{
+  font-size:27px;
+  font-weight:600;
+  line-height:1.26;
+  letter-spacing:-0.022em;
+  margin:0 0 28px;
+  text-wrap:pretty;
+}
+@media (min-width:600px){
+  .q{font-size:22px}
+  .a{font-size:32px;margin-bottom:32px}
+}
+
+/* ---- the one conversion event. Radii are concentric: 12 button + 14 padding = 26 card ---- */
+.get{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:14px;
+  margin-bottom:48px;
+}
+.get-app{display:flex;align-items:center;gap:12px;margin:2px 0 16px 2px}
+.get-icon{
+  width:56px;height:56px;flex:none;
+  border-radius:13px;
+  box-shadow:0 0 0 1px var(--line);
+  display:block;
+}
+.get-name{font-size:17px;font-weight:600;letter-spacing:-0.012em;line-height:1.25}
+.get-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--ink-2);
+  letter-spacing:0.01em;
+  margin-top:3px;
+}
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 16px;
+  background:var(--accent);
+  color:var(--on-accent);
+  border-radius:12px;
+  font-size:clamp(15px,4.2vw,17px);
+  font-weight:700;
+  letter-spacing:-0.012em;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:transform .16s cubic-bezier(.2,.7,.2,1),filter .16s ease;
+}
+.cta:hover{filter:brightness(1.08)}
+.cta:active{transform:scale(.985)}
+
+/* ---- the rail: everything below the answer is apparatus, and hangs off one line ---- */
+.rail{
+  border-left:1px solid var(--line);
+  margin-left:7px;
+  padding-left:var(--rail);
+}
+.sec{margin-bottom:44px}
+.sec:last-child{margin-bottom:0}
+.lbl{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin:0 0 16px calc(-1px - var(--rail));
+  padding:2px 0;
+  background:var(--bg);
+}
+
+/* ---- steps: numbered because the content genuinely is a sequence ---- */
+.steps{list-style:none;counter-reset:step;margin:0;padding:0}
+.steps li{position:relative;margin-bottom:20px}
+.steps li:last-child{margin-bottom:0}
+.steps li::before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;
+  left:calc(-1px - var(--rail));
+  top:0;
+  width:var(--rail);
+  font-family:var(--mono);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+  line-height:26px;
+  color:var(--ink-2);
+  background:var(--bg);
+}
+.steps b{display:block;font-weight:600;letter-spacing:-0.01em}
+.steps p{margin:2px 0 0;color:var(--ink-2)}
+
+/* ---- support: the address is set in full-strength ink, never in the accent.
+       Weight and colour do the work so the CTA keeps the only coloured mark ---- */
+.support{scroll-margin-top:20px}
+.support p{margin:0;color:var(--ink-2)}
+.support-mail{
+  display:inline-block;
+  margin-bottom:8px;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:-0.012em;
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+/* ---- facts ---- */
+.facts{margin:0;font-size:15px}
+.facts div{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+}
+.facts div:last-child{border-bottom:0}
+.facts dt{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+.facts dd{margin:0;text-align:right}
+
+/* ---- questions: always open, no script, fully extractable ---- */
+.faq h3{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  line-height:1.4;
+  margin:0 0 4px;
+}
+.faq p{margin:0 0 20px;color:var(--ink-2)}
+.faq p:last-child{margin-bottom:0}
+
+/* ---- footer ---- */
+.foot{
+  margin-top:48px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.9;
+  color:var(--ink-2);
+}
+.foot-store{
+  display:inline-block;
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+  margin-bottom:14px;
+}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:14px}
+.foot-links a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.foot-links a:hover{color:var(--ink)}
+.foot-legal{letter-spacing:0.02em}
+
+/* ---- one entrance, transform only: nothing on this page is ever invisible ---- */
+@keyframes rise{from{transform:translateY(10px)}to{transform:translateY(0)}}
+.q,.a,.get{animation:rise .5s cubic-bezier(.2,.75,.25,1) both}
+.a{animation-delay:.05s}
+.get{animation-delay:.11s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <img class="icon" src="icon.png" alt="Stud Finder Pro icon">
-    <h1>Stud Finder Pro</h1>
-    <p class="tagline">Measure twice. Drill once.</p>
-    <div class="links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="support.html">Support</a>
+<main class="doc">
+
+  <header class="masthead">
+    <a class="brand" href="https://cmlapps.github.io/">Cloud Motion Lab</a>
+    <a class="support-jump" href="#support">Support</a>
+  </header>
+
+  <h1 class="q">How do I find a stud in the wall with my phone?</h1>
+
+  <p class="a">Stud Finder Pro: Stud Sensor uses the magnetometer inside your iPhone to locate the screws and nails fixing drywall to a stud. Take the case off, hold the top edge flat against the wall, slide sideways, and mark where the reading peaks.</p>
+
+  <div class="get">
+    <div class="get-app">
+      <img class="get-icon" src="data:image/png;base64,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" alt="" width="56" height="56">
+      <div>
+        <div class="get-name">Stud Finder Pro: Stud Sensor</div>
+        <div class="get-meta">Magnetic stud sensor for iPhone · iOS 17.0 or later</div>
+      </div>
     </div>
-    <p class="footer">
-      <a href="https://apps.apple.com/app/id6759074563">Download on the App Store</a><br>
-      Cloud Motion Lab · <a href="mailto:dev@slyapp.co">dev@slyapp.co</a>
-    </p>
+    <a class="cta" href="https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563">Get Stud Finder Pro on the App Store</a>
   </div>
+
+  <div class="rail">
+
+    <section class="sec">
+      <h2 class="lbl">How it works</h2>
+      <ol class="steps">
+        <li><b>Take the case off</b><p>A MagSafe case, a magnetic wallet or a metal-backed case will swamp a sensor measuring microtesla, and so will a watch held nearby. Bare phone, and step back from radiators, pipes and metal furniture.</p></li>
+        <li><b>Calibrate in open air</b><p>Hold still for about two seconds away from the wall. That zeroes the room's own magnetic field so the scan measures the change your phone crosses rather than the background.</p></li>
+        <li><b>Slide across the wall</b><p>Put the top edge of the phone flat to the wall and move it sideways, slowly and steadily, in a horizontal line. The reading climbs as you approach metal, peaks over it, then drops away.</p></li>
+        <li><b>Mark the peak, then confirm it</b><p>Mark where the signal peaked, not where it started rising. Scan again a foot higher and mark that peak too. Two marks in a vertical line is a stud; one mark on its own could be anything.</p></li>
+      </ol>
+    </section>
+
+    <section class="sec">
+      <h2 class="lbl">The app</h2>
+      <dl class="facts">
+        <div><dt>Price</dt><dd>Free to download, first scan free. From the second scan on it is a one-time purchase. There is no subscription.</dd></div>
+        <div><dt>Requires</dt><dd>iPhone with a magnetometer, iOS 17.0 or later. The phone case has to come off.</dd></div>
+        <div><dt>Account</dt><dd>None. No sign-up, and the sensor data never leaves the device.</dd></div>
+        <div><dt>Publisher</dt><dd>Cloud Motion Lab LLC</dd></div>
+      </dl>
+    </section>
+
+    <section class="sec faq">
+      <h2 class="lbl">Common questions</h2>
+      <h3>Is it finding the wood, or something else?</h3>
+      <p>Something else. Wood has no magnetic signature at all, so no phone can sense it. What the sensor picks up is the steel drywall screw or nail driven through the board into the timber, spaced every foot or so up the length of the stud. Find two of those in a vertical line and the stud runs between them, centred roughly on the screws.</p>
+      <h3>How do I find a stud with no app and no tools?</h3>
+      <p>Studs in a US home usually sit 16 inches apart centre to centre, sometimes 24. Start at a corner or an electrical box, since boxes are normally nailed to the side of a stud, then measure across in 16-inch steps and tap. Over a cavity the wall sounds hollow and gives slightly; over a stud it is tight and dull. Looking along the wall with light raking across it also shows faint dimples where screws were filled.</p>
+      <h3>What will it not detect?</h3>
+      <p>Wood on its own, plastic pipe, copper and aluminium, and live electrical current. It responds to ferrous metal and nothing else, which means a quiet reading is not proof that a spot is safe to drill. Before you make a hole near a switch, an outlet or a kitchen, check where the cable is likely to run, or use a dedicated live-wire detector.</p>
+      <h3>Is Stud Finder Pro free?</h3>
+      <p>The first scan is free and complete: full magnetometer readout in microtesla, the arc gauge, the tone that climbs as the signal rises and the haptic tap at the peak. From the second scan on, the app asks for a one-time purchase, and there is no subscription.</p>
+    </section>
+
+    <section class="sec support" id="support">
+      <h2 class="lbl">Support</h2>
+      <a class="support-mail" href="mailto:dev@slyapp.co">dev@slyapp.co</a>
+      <p>If it found nothing on a wall you are sure has studs in it, tell us the wall type and your iPhone model before you drill again. Some walls are outside what a magnetometer can read, and we would rather say that than defend the scan.</p>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <a class="foot-store" href="https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563">Stud Finder Pro: Stud Sensor on the App Store</a>
+    <div class="foot-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="eula.html">EULA</a>
+      <a href="mailto:dev@slyapp.co">Contact</a>
+      <a href="https://cmlapps.github.io/">All apps</a>
+    </div>
+    <div class="foot-legal">Cloud Motion Lab LLC, dev@slyapp.co</div>
+  </footer>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Stud Finder Pro: Stud Sensor",
+  "operatingSystem": "iOS 17.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "url": "https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563",
+  "installUrl": "https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cloud Motion Lab LLC",
+    "url": "https://cmlapps.github.io/"
+  },
+  "downloadUrl": "https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563",
+  "sameAs": [
+    "https://apps.apple.com/us/app/stud-finder-pro-stud-sensor/id6759074563"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How do I find a stud in the wall with my phone?","acceptedAnswer":{"@type":"Answer","text":"Stud Finder Pro: Stud Sensor uses the magnetometer inside your iPhone to locate the screws and nails fixing drywall to a stud. Take the case off, hold the top edge flat against the wall, slide sideways, and mark where the reading peaks."}},
+    {"@type":"Question","name":"Is it finding the wood, or something else?","acceptedAnswer":{"@type":"Answer","text":"Something else. Wood has no magnetic signature at all, so no phone can sense it. What the sensor picks up is the steel drywall screw or nail driven through the board into the timber, spaced every foot or so up the length of the stud. Find two of those in a vertical line and the stud runs between them, centred roughly on the screws."}},
+    {"@type":"Question","name":"How do I find a stud with no app and no tools?","acceptedAnswer":{"@type":"Answer","text":"Studs in a US home usually sit 16 inches apart centre to centre, sometimes 24. Start at a corner or an electrical box, since boxes are normally nailed to the side of a stud, then measure across in 16-inch steps and tap. Over a cavity the wall sounds hollow and gives slightly; over a stud it is tight and dull. Looking along the wall with light raking across it also shows faint dimples where screws were filled."}},
+    {"@type":"Question","name":"What will it not detect?","acceptedAnswer":{"@type":"Answer","text":"Wood on its own, plastic pipe, copper and aluminium, and live electrical current. It responds to ferrous metal and nothing else, which means a quiet reading is not proof that a spot is safe to drill. Before you make a hole near a switch, an outlet or a kitchen, check where the cable is likely to run, or use a dedicated live-wire detector."}},
+    {"@type":"Question","name":"Is Stud Finder Pro free?","acceptedAnswer":{"@type":"Answer","text":"The first scan is free and complete: full magnetometer readout in microtesla, the arc gauge, the tone that climbs as the signal rises and the haptic tap at the peak. From the second scan on, the app asks for a one-time purchase, and there is no subscription."}}
+  ]
+}
+</script>
+
 </body>
 </html>
